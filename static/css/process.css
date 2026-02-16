@@ -1,0 +1,139 @@
+.processFlow{
+    --gap: 26px;
+    counter-reset: step;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    align-items: start;
+    gap: var(--gap);
+    position: relative;
+    margin-top: 24px;
+}
+
+.processFlow::before{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    top:28px;
+    height:2px;
+    background: rgba(46,47,54,.12);
+    z-index:0;
+}
+
+/* step */
+.processStep{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:10px;
+    z-index:1;
+}
+
+.processStep__icon{
+    position: relative;
+    width:56px;
+    height:56px;
+    border-radius:999px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+
+    background: var(--rose-mist);
+    border:1px solid rgba(46,47,54,.12);
+    box-shadow: 0 10px 20px rgba(0,0,0,.06);
+
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.processStep__icon::before{
+    counter-increment: step;
+    content: counter(step);
+
+    position:absolute;
+    top:-8px;
+    left:-8px;
+
+    width:22px;
+    height:22px;
+    font-size:12px;
+    border-radius:999px;
+
+    background: var(--accent);
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+}
+
+.processStep__label{
+    font-size:14px;
+    line-height:1.5;
+    color: var(--text-soft);
+    word-break:keep-all;
+}
+
+.processStep:hover .processStep__icon{
+    transform: translateY(-3px);
+    box-shadow: 0 14px 26px rgba(0,0,0,.10);
+}
+
+
+
+@media (max-width: 1100px){
+    .processFlow{
+        grid-template-columns: repeat(4, 1fr);
+        row-gap: 22px;
+    }
+    .processFlow::before{
+        display: none;
+    }
+}
+
+@media (max-width: 860px){
+    .processFlow{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 640px){
+    .processFlow{
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .processFlow::before{
+        display: block;
+        left:28px;
+        right:auto;
+        top:0;
+        bottom:0;
+        width:2px;
+        height:auto;
+    }
+
+    .processStep{
+        flex-direction:row;
+        text-align:left;
+        gap:14px;
+        align-items:center;
+    }
+
+    .processStep__icon{
+        width:48px;
+        height:48px;
+        font-size:20px;
+    }
+
+    .processStep__icon::before{
+        top:-6px;
+        left:-6px;
+        width:20px;
+        height:20px;
+        font-size:11px;
+    }
+}

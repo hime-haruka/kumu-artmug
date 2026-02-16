@@ -1,0 +1,104 @@
+.intro__inner {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 24px;
+    align-items: center;
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
+.intro__text {
+    min-width: 0;
+    max-width: 760px;
+}
+
+.intro__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    height: 28px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--text-soft);
+    font-size: 13px;
+    letter-spacing: .3px;
+}
+
+.intro__headline {
+    margin-top: 14px;
+    font-family: 'ChilchilgongBalsache','Courier New',Courier,monospace;
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 1.18;
+    letter-spacing: -.2px;
+    color: var(--text);
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.intro__sub {
+    margin-top: 14px;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-soft);
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.intro__cta {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+@media (max-width: 900px) {
+    .intro__headline{ font-size: 38px; }
+    .intro__inner{ grid-template-columns: 1fr; }
+    .intro__visual{ justify-content: flex-start; }
+    .intro__visualBox{ width: min(520px, 100%); aspect-ratio: 16 / 9; border-radius: 22px; }
+}
+
+@media (max-width: 640px) {
+    .intro{ padding-top: var(--sec-gap); }
+    .intro__headline{ font-size: 30px; line-height: 1.22; }
+    .intro__sub{ font-size: 16px; }
+    .intro .btn{ height: 44px; padding: 0 14px; }
+}
+
+@media (max-width: 360px) {
+    .intro__headline{ font-size: 26px; }
+    .intro__eyebrow{ font-size: 12px; }
+}
+
+.intro__media{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    margin-top:28px;
+    flex-wrap:wrap;
+}
+
+.introGif{
+    width:min(420px, 48%);
+    aspect-ratio:5 / 3;
+    border-radius:var(--r-xl);
+    overflow:hidden;
+    background:var(--surface-2);
+}
+
+.introGif img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+@media (max-width:640px){
+    .introGif{
+        width:100%;
+        max-width:420px;
+    }
+}

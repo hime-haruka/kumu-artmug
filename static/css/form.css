@@ -1,0 +1,400 @@
+/* =======================================
+   FORM / QUOTE  (#form) - single column
+   Quote box goes UNDER the form blocks
+======================================= */
+
+#form .secBox{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+#form .head{ margin-bottom: 0; }
+
+/* 1열 고정 */
+#form .quoteForm{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+/* blocks */
+#form .formGrid{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  min-width:0;
+}
+
+/* quote box: 스티키/오른쪽 고정 제거 */
+#form .quoteBox{
+  position: static;
+  top: auto;
+  text-align:left;
+}
+
+/* ===== block card ===== */
+#form .formBlock{
+  text-align:left;
+  padding: 18px;
+}
+
+#form .formBlock__title{
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  font-size: 18px;
+  margin: 0 0 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed rgba(46,47,54,.14);
+}
+
+#form .formBlock__desc{
+  margin: 8px 0 0;
+  color: var(--text-soft);
+  line-height: 1.7;
+}
+
+/* ===== field ===== */
+#form .formField{
+  display:flex;
+  flex-direction:column;
+  gap: 8px;
+  margin-top: 12px;
+  min-width: 0;
+}
+
+#form .formLabel{
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #cf7951;
+  font-size: 14px;
+}
+
+/* inputs */
+#form .formInput,
+#form .formTextarea{
+  width: 100%;
+  border-radius: var(--r-md);
+  border: 1px solid rgba(46,47,54,.12);
+  background: rgba(255,255,255,.55);
+  padding: 12px 12px;
+  font: inherit;
+  color: inherit;
+  outline: none;
+  transition: box-shadow .15s ease, background .15s ease, border-color .15s ease;
+}
+
+#form .formTextarea{
+  min-height: 132px;
+  resize: vertical;
+}
+
+#form .formInput:focus,
+#form .formTextarea:focus{
+  background: rgba(255,255,255,.75);
+  border-color: rgba(46,47,54,.20);
+  box-shadow: 0 0 0 4px rgba(242,171,175,.20);
+}
+
+/* ===== choice pills (radio/checkbox) ===== */
+#form .formChoices{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+#form .formChoice{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap: 10px;
+
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(46,47,54,.10);
+  background: rgba(255,255,255,.35);
+  cursor: pointer;
+
+  transition: transform .12s ease, background .12s ease, border-color .12s ease, box-shadow .12s ease;
+  user-select: none;
+}
+
+#form .formChoice:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.50);
+  box-shadow: 0 10px 18px rgba(0,0,0,.05);
+}
+
+#form .formChoice input{
+  accent-color: var(--accent);
+  transform: translateY(-.5px);
+}
+
+#form .formChoice:has(input:checked){
+  background: rgba(255, 238, 219, 0.35);
+  border-color: rgba(46,47,54,.16);
+  box-shadow: 0 12px 22px rgba(0,0,0,.06);
+}
+
+#form .formChoice__text{
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  font-size: 14.5px;
+}
+
+/* ===== unit rows (number inputs) ===== */
+#form .formUnits{
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+#form .formUnitRow{
+  display:grid;
+  grid-template-columns: 1fr 110px auto;
+  gap: 10px;
+  align-items:center;
+
+  padding: 12px 12px;
+  border-radius: var(--r-md);
+  border: 1px solid rgba(46,47,54,.10);
+  background: rgba(255,255,255,.35);
+
+  transition: background .12s ease, box-shadow .12s ease, transform .12s ease;
+}
+
+#form .formUnitRow:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.50);
+  box-shadow: 0 12px 22px rgba(0,0,0,.06);
+}
+
+#form .formUnitRow__label{
+  font-weight: 800;
+  color: #cf7951;
+  letter-spacing: -0.01em;
+}
+
+#form .formUnitRow__input{
+  width:100%;
+  padding: 10px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(46,47,54,.12);
+  background: rgba(255,255,255,.75);
+  font: inherit;
+  outline: none;
+  transition: box-shadow .15s ease, background .15s ease, border-color .15s ease;
+}
+
+#form .formUnitRow__input:focus{
+  background:#fff;
+  border-color: rgba(46,47,54,.20);
+  box-shadow: 0 0 0 4px rgba(242,171,175,.20);
+}
+
+#form .formUnitRow__hint{
+  color: var(--text-muted);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* ===== quote box ===== */
+#form .quoteBox__top{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap: 12px;
+}
+
+#form .quoteBox__title{
+  font-weight: 900;
+  font-size: 18px;
+  margin: 0;
+}
+
+#form .quoteBox__sum{
+  display:flex;
+  align-items:baseline;
+  gap: 8px;
+}
+
+#form .quoteBox__sumLabel{
+  color: var(--text-soft);
+  font-size: 13px;
+}
+
+#form .quoteBox__sumVal{
+  font-size: 22px;
+  letter-spacing: -0.01em;
+}
+
+#form .quoteMini{
+  display:flex;
+  flex-direction:column;
+  gap: 8px;
+}
+
+#form .quoteRow{
+  display:flex;
+  justify-content:space-between;
+  gap: 10px;
+}
+
+#form .quoteKey{ color: var(--text-soft); }
+#form .quoteVal{ font-weight: 800; }
+
+#form .quoteItems{
+  margin-top: 12px;
+  display:flex;
+  flex-direction:column;
+  gap: 8px;
+}
+
+#form .quoteItem{
+  display:flex;
+  justify-content:space-between;
+  gap: 10px;
+  padding: 10px 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(46,47,54,.08);
+  background: rgba(255,255,255,.35);
+}
+
+#form .quoteItem__label{
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+#form .quoteItem__val{ color: var(--text-soft); }
+#form .quoteEmpty{ color: var(--text-muted); padding: 8px 0 0; }
+
+/* actions */
+#form .quoteBox__actions{
+  margin-top: 14px;
+  display:flex;
+  gap: 10px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+/* ===== responsive ===== */
+@media (max-width: 640px){
+  #form .formBlock{ padding: 16px; border-radius: var(--r-md); }
+  #form .formBlock__title{ font-size: 17px; }
+
+  #form .formUnitRow{
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  #form .formUnitRow__hint{ white-space: normal; }
+
+  #form .quoteBox__top{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+#form .quoteBox__detail{
+  padding-top: 6px;
+}
+
+#form .quoteMini{
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+}
+
+#form .formGrid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+/* 카드가 내용에 따라 깨지지 않게 */
+#form .formBlock{ min-width:0; }
+
+/* 크게 보여줄 카드(옵션/긴 텍스트) */
+#form .formBlock--span3{
+  grid-column: 1 / -1;
+}
+
+/* textarea는 카드 안에서 여유 */
+#form .formTextarea{ min-height: 160px; }
+
+/* ---- choices ---- */
+
+/* radio는 줄바꿈 허용 */
+#form .formChoices--wrap{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:12px;
+}
+
+/* checkbox는 그리드로 “예쁘게” */
+#form .formChoices--grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+#form .formChoices--grid .formChoice{
+  justify-content:flex-start;
+  border-radius: 16px; /* pill보다 카드감 */
+  padding: 12px 12px;
+}
+
+/* ---- number units ---- */
+#form .formUnits--2col{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* unit row 내부 레이아웃은 좀 더 컴팩트 */
+#form .formUnitRow{
+  grid-template-columns: 1fr 90px;
+  grid-template-areas:
+    "label input"
+    "hint  hint";
+  row-gap: 8px;
+  column-gap: 10px;
+  align-items:center;
+}
+
+#form .formUnitRow__label{ grid-area: label; }
+#form .formUnitRow__input{ grid-area: input; }
+#form .formUnitRow__hint{
+  grid-area: hint;
+  white-space: normal;
+}
+
+/* 협업/일러레 합친 카드에서 보조 입력은 살짝 구분 */
+#form .formField--sub{
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(46,47,54,.14);
+}
+
+/* ===== responsive ===== */
+@media (max-width: 980px){
+  #form .formGrid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #form .formChoices--grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px){
+  #form .formGrid{ grid-template-columns: 1fr; }
+  #form .formChoices--grid{ grid-template-columns: 1fr; }
+  #form .formUnits--2col{ grid-template-columns: 1fr; }
+}
+
+#form [data-copy].is-copied{
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(0,0,0,.10);
+  outline: 3px solid rgba(242,171,175,.35);
+}

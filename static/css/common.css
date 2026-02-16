@@ -1,0 +1,233 @@
+@import url(./reset.css);
+@import url(./font.css);
+@import url(./intro.css);
+@import url(./collab.css);
+@import url(./notice.css);
+@import url(./details.css);
+@import url(./process.css);
+@import url(./options.css);
+@import url(./portfolio.css);
+@import url(./form.css);
+
+/*  =======================================
+        TOKENS
+======================================= */
+:root{
+    /* base */
+    --bg:        #FBF2E9; /* 전체 배경(크림) */
+    --surface:   #f1efe5; /* 섹션/카드 바탕 */
+    --surface-2: #FFEAD9; /* 포인트 들어가는 밝은 바탕 */
+    --muted:     #ced5d6; /* 라인/구분/보조 */
+
+    /* accents */
+    --accent:      #F2ABAF; /* 메인 강조 */
+    --accent-soft: #F5CCC6; /* 연한 강조 */
+    --peach:       #FFD9C6; /* 보조 포인트 (WARM) */
+    --sky:         #B8C9E7; /* 보조 포인트 (COLD) */
+    --rose-mist:   #F9E5E1; /* 보조 배경/뱃지 */
+
+    /* text */
+    --text:        #2E2F36; /* 본문 */
+    --text-soft:   #5E606B; /* 보조 텍스트 */
+    --text-muted:  #8A8D98; /* 캡션/힌트 */
+
+    --ui-soft: #F2ECE6;     /* 페이지 위 떠있는 판 느낌 */
+    --ui-card: #FBF8F4;     /* 기본 카드 */
+    --ui-open: #ffead986;     /* 열린 카드 */
+    --ui-border-strong: #D7CEC6;
+
+    --ui-accent-soft: #F4E1DE; /* 열림 강조 배경 */
+
+    /* lines / effects */
+    --border:        rgba(46,47,54,.12);
+    --border-strong: rgba(46,47,54,.18);
+    --shadow:        0 10px 30px rgba(46,47,54,.10);
+
+    /* gradients */
+    --grad-hero: linear-gradient(180deg, #FBF2E9 0%, #ffe9dd 45%, #F5CCC6 100%);
+    --grad-accent: linear-gradient(135deg, #F2ABAF 0%, #FFD9C6 55%, #ffe9dd 120%);
+
+    /* radius */
+    --r-sm: 10px;
+    --r-md: 16px;
+    --r-lg: 24px;
+}
+
+/*  =======================================
+        GENERAL
+======================================= */
+body {
+    font-family: 'LotteMartDream';
+    font-weight: 300;
+}
+
+.mainWrap {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.sec {
+    margin-bottom: var(--sec-gap);
+    text-align: center;
+}
+
+/* =======================================
+   LAYOUT
+======================================= */
+:root{
+  --w-max: 1180px;
+  --w-pad: 20px;
+  --sec-gap: 78px;
+  --card-gap: 16px;
+
+  --lh: 1.6;
+  --fz-base: 16px;
+
+  --btn-h: 44px;
+}
+
+html, body{
+    background: var(--bg);
+    color: var(--text);
+}
+
+body{
+    font-family: 'LotteMartDream';
+    font-weight: 300;
+    line-height: var(--lh);
+    font-size: var(--fz-base);
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.mainWrap {
+    max-width: var(--w-max);
+    margin: 0 auto;
+    padding: 0 var(--w-pad);
+}
+
+.sec .title{
+    font-family: 'ChilchilgongBalsache','Courier New',Courier,monospace;
+    font-size: 28px;
+    letter-spacing: .2px;
+}
+
+.sec .desc{
+    color: var(--text-soft);
+}
+
+.sec .head{
+    text-align: center;
+    margin-bottom: 40px;
+
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    padding: 18px 22px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    width: 100%;
+}
+
+
+
+
+
+/* =======================================
+   CARD / SURFACE
+======================================= */
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow);
+    padding: 22px;
+}
+
+.card--soft {
+  background: var(--surface-2);
+}
+
+.hr {
+    height: 1px;
+    background: var(--border);
+    margin: 18px 0;
+}
+
+/* =======================================
+   GRID UTILITIES
+======================================= */
+.grid {
+    display: grid;
+    gap: var(--card-gap);
+}
+
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+/* =======================================
+   BUTTON / BADGE
+======================================= */
+.btn {
+    height: var(--btn-h);
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    background: #fff;
+    color: var(--text);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: transform .08s ease, box-shadow .12s ease, background .12s ease;
+}
+
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+.btn--primary {
+    background: var(--grad-accent);
+    border-color: rgba(46,47,54,.10);
+}
+
+.btn--ghost {
+    background: transparent;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    height: 24px;
+    padding: 0 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    background: var(--rose-mist);
+    border: 1px solid var(--border);
+    color: var(--text-soft);
+}
+
+/* =======================================
+   RESPONSIVE
+======================================= */
+@media (max-width: 900px) {
+    .grid-4{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+    :root{ --sec-gap: 40px; --w-pad: 16px; }
+    .grid-2, .grid-3, .grid-4{ grid-template-columns: 1fr; }
+    .sec .title{ font-size: 24px; }
+    .card{ padding: 18px; border-radius: var(--r-md); }
+}
+
+@media (max-width: 360px){
+    :root{ --w-pad: 12px; --sec-gap: 32px; }
+    .card{ padding: 14px; }
+    .btn{ height: 40px; padding: 0 12px; }
+    .sec .title{ font-size: 22px; }
+}
+

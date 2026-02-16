@@ -1,0 +1,153 @@
+/* =======================================
+   PORTFOLIO SLIDER
+======================================= */
+
+#portfolio .secBox{ display:flex; flex-direction:column; gap:18px; }
+#portfolio .head{ margin-bottom:0; }
+
+.pfSlider{
+  position:relative;
+  border-radius: var(--r-lg);
+  background: rgba(255, 234, 217, 0.25);
+  border: 1px solid rgba(46,47,54,.10);
+  box-shadow: 0 10px 22px rgba(0,0,0,.06);
+  padding: 14px 54px;
+}
+
+.pfViewport{
+  overflow:hidden;
+  border-radius: var(--r-lg);
+}
+
+.pfTrack{
+  display:flex;
+  width:100%;
+  transform: translateX(0%);
+  transition: transform .28s ease;
+}
+
+.pfSlide{
+  flex: 0 0 100%;
+  padding: 6px;
+}
+
+.pfCard{
+  display:block;
+  border-radius: var(--r-lg);
+  overflow:hidden;
+  background: rgba(255,255,255,.35);
+  border: 1px solid rgba(46,47,54,.08);
+}
+
+.pfThumb{
+  position:relative;
+  overflow:hidden;
+  aspect-ratio: 16 / 9;
+  background: rgba(255,255,255,.25);
+}
+
+.pfThumb__img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transform: translateZ(0);
+  transition: transform .22s ease, filter .22s ease;
+}
+
+.pfThumb__overlay{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  background: rgba(245, 204, 198, 0.38);
+  opacity:0;
+  transition: opacity .2s ease;
+}
+
+.pfThumb__cta{
+  font-weight:800;
+  letter-spacing:-0.02em;
+  background: rgba(255,255,255,.55);
+  border: 1px solid rgba(46,47,54,.10);
+  padding: 10px 14px;
+  border-radius: 999px;
+}
+
+.pfCard:hover .pfThumb__img{
+  transform: scale(1.03);
+  filter: blur(1px);
+}
+.pfCard:hover .pfThumb__overlay{ opacity:1; }
+
+.pfBody{
+  padding: 14px 14px 16px;
+}
+
+.pfTitle{
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: #cf7951;
+  margin-bottom: 8px;
+}
+
+.pfDesc{
+  color:#6F6A66;
+  line-height:1.65;
+  font-size: 14.5px;
+  white-space: normal;
+}
+
+/* nav */
+.pfNav{
+  position:absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid rgba(46,47,54,.12);
+  background: rgba(255,255,255,.55);
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+  font-size: 22px;
+  line-height:1;
+}
+
+.pfNav:disabled{
+  opacity:.35;
+  cursor: default;
+}
+
+.pfNav--prev{ left: 10px; }
+.pfNav--next{ right: 10px; }
+
+.pfDots{
+  display:flex;
+  justify-content:center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.pfDot{
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(46,47,54,.18);
+  background: rgba(255,255,255,.35);
+  cursor:pointer;
+}
+
+.pfDot.is-active{
+  background: var(--accent);
+  border-color: rgba(46,47,54,.10);
+}
+
+.pfViewport{ touch-action: pan-y; }
+
+@media (max-width: 640px){
+  .pfSlider{ padding: 12px 46px; }
+  .pfBody{ padding: 12px 12px 14px; }
+  .pfDesc{ font-size: 14px; }
+}
