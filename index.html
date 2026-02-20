@@ -12,21 +12,13 @@
         <div class="mainWrap">
             <section id="intro" class="sec intro">
                 <div class="intro__inner">
-                    <div class="intro__media">
-                        <figure class="introGif introGif--main">
-                            <img src="https://lh3.googleusercontent.com/d/1JYqz7KCZCiO34MSiYCv1jfbtjTX1FNT0" alt="대표 GIF" loading="eager" />
-                        </figure>
-
-                        <figure class="introGif introGif--sub">
-                            <img src="https://lh3.googleusercontent.com/d/1ICc5GQe_Vt6kiCjOrQ46Zv4jNXIuELT_" alt="추가 GIF" loading="lazy" />
-                        </figure>
-                    </div>
                     <div class="intro__text">
                         <p class="intro__eyebrow">VTuber Live2D Rigging</p>
 
                         <h1 class="intro__headline">
                             다채로운 표정과 섬세한 물리로<br />
-                            자연스럽고 예쁜 나만의 캐릭터 완성
+                            자연스럽고 예쁜<br />
+                            나만의 캐릭터 완성
                         </h1>
 
                         <p class="intro__sub">
@@ -38,17 +30,39 @@
                             <a name="goto" href="portfolio" class="btn">포트폴리오 보기</a>
                         </div>
                     </div>
+
+                    <div class="intro__media">
+                        <div class="introSlider" data-intro="slider">
+                            <button class="introNav introNav--prev" type="button" aria-label="이전">‹</button>
+
+                            <div class="introViewport" aria-live="polite">
+                                <div class="introTrack"></div>
+                            </div>
+
+                            <button class="introNav introNav--next" type="button" aria-label="다음">›</button>
+                        </div>
+
+                        <div class="introDots" data-intro="dots"></div>
+                    </div>
                 </div>
             </section>
 
             <section class="sec" id="collab">
-                    <div class="secBox">
-                        <div class="collabHead head">
+                <div class="secBox">
+                    <button class="collabHead head" type="button" aria-expanded="true" aria-controls="collabPanel">
+                        <span class="collabHead__text">
                             <h2 class="title">협업 작가</h2>
                             <p class="desc">일러스트, 리깅 동시 예약 주셔야 협업 할인 혜택이 적용됩니다!</p>
-                        </div>
+                        </span>
+
+                        <span class="collabHead__chev" aria-hidden="true"></span>
+                    </button>
+
+                    <div id="collabPanel" class="collabPanel" role="region" aria-label="협업 작가 목록">
                         <div id="collabGrid" class="collabGrid"></div>
                     </div>
+
+                </div>
             </section>
 
             <section class="sec" id="notice"></section>
@@ -75,7 +89,7 @@
 
                         <li class="processStep">
                             <div class="processStep__icon">🙂</div>
-                            <div class="processStep__label">1차 리깅 / 얼굴 정면</div>
+                            <div class="processStep__label">[1차 리깅]<p>얼굴 정면</p></div>
                         </li>
 
                         <li class="processStep">
@@ -85,7 +99,7 @@
 
                         <li class="processStep">
                             <div class="processStep__icon">🧩</div>
-                            <div class="processStep__label">2차 리깅 / 움직임 및 물리</div>
+                            <div class="processStep__label">[2차 리깅]<p>움직임 및 물리</p></div>
                         </li>
 
                         <li class="processStep">

@@ -8,7 +8,7 @@
 .pfSlider{
   position:relative;
   border-radius: var(--r-lg);
-  background: rgba(255, 234, 217, 0.25);
+  background: #f9e6e2;
   border: 1px solid rgba(46,47,54,.10);
   box-shadow: 0 10px 22px rgba(0,0,0,.06);
   padding: 14px 54px;
@@ -87,7 +87,7 @@
 .pfTitle{
   font-weight: 900;
   letter-spacing: -0.01em;
-  color: #cf7951;
+  color: #e66b7b;
   margin-bottom: 8px;
 }
 

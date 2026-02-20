@@ -1,11 +1,3 @@
-/* =======================================
-    collab
-======================================= */
-
-/* =========================
-   COLLAB
-========================= */
-
 .collabGrid{
   display:flex;
   flex-wrap:wrap;
@@ -13,7 +5,6 @@
   justify-content:center;
 }
 
-/* 카드 */
 .collabCard{
   flex:0 1 calc((100% - 40px) / 3);
   max-width:380px;
@@ -21,16 +12,14 @@
   width:100%;
   border:1px solid var(--border);
   border-radius:var(--r-lg);
-  background:var(--surface);
+  background:#fee9be;
   overflow:hidden;
   text-decoration:none;
   color:inherit;
 }
 
-/* hover 커서만 */
 .collabCard--link{ cursor:pointer; }
 
-/* 썸네일 */
 .collabCard__thumb{
   position:relative;
   overflow:hidden;
@@ -96,13 +85,14 @@
 .collabCard__body {
   padding:16px;
   text-align: center;
+  background-color: #fee9be;
 }
 
 .collabCard__title{
   font-size:18px;
   font-weight:bold;
   letter-spacing:-0.01em;
-  color: var(--accent);
+  color: var(--text);
 }
 
 .collabCard__note{
@@ -112,10 +102,82 @@
   line-height:1.6;
 }
 
-/* 반응형 */
 @media (max-width:900px){
   .collabCard{ flex-basis:calc((100% - 20px) / 2); }
 }
 @media (max-width:640px){
   .collabCard{ flex-basis:100%; min-width:0; }
+}
+
+
+.collabHead{
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+
+  /* 버튼 기본값 제거 */
+  border: 1px solid rgba(70, 49, 44, .08);
+  background: linear-gradient(180deg, rgba(255, 195, 182, .95), rgba(255, 195, 182, .75));
+  padding: 24px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.collabHead:focus-visible{
+  outline: 3px solid rgba(255, 170, 150, .65);
+  outline-offset: 3px;
+}
+
+.collabHead__text{
+  display: block;
+}
+
+/* chevron */
+.collabHead__chev{
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(70,49,44,.10);
+  background: rgba(255,255,255,.65);
+  position: relative;
+  transition: transform .22s ease, background .22s ease;
+}
+
+.collabHead__chev::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid rgba(70,49,44,.62);
+  border-bottom: 2px solid rgba(70,49,44,.62);
+  transform: rotate(45deg);
+  top: -2px;
+  transition: transform .22s ease, top .22s ease;
+}
+
+#collab:not(.is-open) .collabHead__chev{
+  background: rgba(255, 255, 255, 0.473);
+}
+
+#collab.is-open .collabHead__chev::before{
+  transform: rotate(225deg);
+  top: 2px;
+}
+
+.collabPanel{
+  margin-top: 18px;
+}
+
+#collab:not(.is-open) .collabHead{
+  border-radius: 18px;
+}
+
+#collab.is-open .collabHead{
+  border-radius: 18px;
 }

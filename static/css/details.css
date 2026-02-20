@@ -14,12 +14,11 @@
   gap: 22px;
 }
 
-.detailGroup{
-    background: var(--surface-2);
+.detailGroup {
+    background: #fff4f2;
     border: 1px solid rgba(46,47,54,.10);
     border-radius: var(--r-lg);
     box-shadow: 0 10px 22px rgba(0,0,0,.06);
-    padding: 18px;
 }
 
 .detailGroup__title{
@@ -28,6 +27,9 @@
     margin-bottom: 12px;
     padding-bottom: 10px;
     border-bottom: 1px dashed rgba(46,47,54,.14);
+    background: #f9e6e2;
+    border-radius: 18px 18px 0 0;
+    padding-top: 18px;
 }
 
 .detailGrid{
@@ -37,6 +39,7 @@
     gap: var(--gap);
     justify-content: center;
     align-items: flex-start;
+    padding: 18px;
 }
 
 .detailCard{

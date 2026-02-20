@@ -1,8 +1,3 @@
-/* =======================================
-   FORM / QUOTE  (#form) - single column
-   Quote box goes UNDER the form blocks
-======================================= */
-
 #form .secBox{
   display:flex;
   flex-direction:column;
@@ -11,14 +6,12 @@
 
 #form .head{ margin-bottom: 0; }
 
-/* 1열 고정 */
 #form .quoteForm{
   display:flex;
   flex-direction:column;
   gap:18px;
 }
 
-/* blocks */
 #form .formGrid{
   display:flex;
   flex-direction:column;
@@ -26,17 +19,17 @@
   min-width:0;
 }
 
-/* quote box: 스티키/오른쪽 고정 제거 */
-#form .quoteBox{
+#form .quoteBox {
   position: static;
   top: auto;
   text-align:left;
 }
 
 /* ===== block card ===== */
-#form .formBlock{
+#form .formBlock {
   text-align:left;
   padding: 18px;
+  background: #f9e6e2;
 }
 
 #form .formBlock__title{
@@ -132,7 +125,7 @@
 }
 
 #form .formChoice:has(input:checked){
-  background: rgba(255, 238, 219, 0.35);
+  background: #ffecdd;
   border-color: rgba(46,47,54,.16);
   box-shadow: 0 12px 22px rgba(0,0,0,.06);
 }
@@ -202,6 +195,11 @@
 }
 
 /* ===== quote box ===== */
+#form .quoteBox {
+  background-color: #fee9be;
+  color: var(--text);
+}
+
 #form .quoteBox__top{
   display:flex;
   align-items:flex-end;
@@ -229,6 +227,7 @@
 #form .quoteBox__sumVal{
   font-size: 22px;
   letter-spacing: -0.01em;
+  font-weight: 800;
 }
 
 #form .quoteMini{
@@ -299,6 +298,7 @@
 
 #form .quoteBox__detail{
   padding-top: 6px;
+  display: none !important;
 }
 
 #form .quoteMini{
@@ -313,20 +313,15 @@
   gap: 14px;
 }
 
-/* 카드가 내용에 따라 깨지지 않게 */
 #form .formBlock{ min-width:0; }
 
-/* 크게 보여줄 카드(옵션/긴 텍스트) */
 #form .formBlock--span3{
   grid-column: 1 / -1;
 }
 
-/* textarea는 카드 안에서 여유 */
 #form .formTextarea{ min-height: 160px; }
 
 /* ---- choices ---- */
-
-/* radio는 줄바꿈 허용 */
 #form .formChoices--wrap{
   display:flex;
   flex-wrap:wrap;
@@ -334,7 +329,6 @@
   margin-top:12px;
 }
 
-/* checkbox는 그리드로 “예쁘게” */
 #form .formChoices--grid{
   display:grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -344,7 +338,7 @@
 
 #form .formChoices--grid .formChoice{
   justify-content:flex-start;
-  border-radius: 16px; /* pill보다 카드감 */
+  border-radius: 16px;
   padding: 12px 12px;
 }
 
@@ -356,7 +350,6 @@
   margin-top: 12px;
 }
 
-/* unit row 내부 레이아웃은 좀 더 컴팩트 */
 #form .formUnitRow{
   grid-template-columns: 1fr 90px;
   grid-template-areas:
@@ -374,7 +367,6 @@
   white-space: normal;
 }
 
-/* 협업/일러레 합친 카드에서 보조 입력은 살짝 구분 */
 #form .formField--sub{
   margin-top: 14px;
   padding-top: 14px;
@@ -397,4 +389,12 @@
   transform: translateY(-1px);
   box-shadow: 0 14px 28px rgba(0,0,0,.10);
   outline: 3px solid rgba(242,171,175,.35);
+}
+
+#form .btn--primary {
+  background: linear-gradient(90deg, #ffda94, #ffb593);
+}
+
+#form .btn--ghost {
+  background-color: #ffffff98;
 }

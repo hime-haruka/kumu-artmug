@@ -510,13 +510,9 @@ function buildDriveImgCandidates(rawUrl) {
   if (!id) return [rawUrl].filter(Boolean);
 
   return [
-    // 0) (권장) thumbnail
     `https://drive.google.com/thumbnail?id=${id}&sz=w1200`,
-    // 1) 일부에서 되는 lh3
     `https://lh3.googleusercontent.com/d/${id}`,
-    // 2) 새 도메인(환경에 따라 더 잘 뜨는 경우 있음)
     `https://drive.usercontent.google.com/download?id=${id}&export=view&confirm=t`,
-    // 3) 기본 uc
     `https://drive.google.com/uc?export=view&id=${id}`,
   ];
 }
@@ -841,7 +837,7 @@ document.addEventListener("DOMContentLoaded", initOptionsSection);
 
 
 /* =========================
-   Portfolio (YouTube thumbnail slider)
+   Portfolio
 ========================= */
 const PORTFOLIO_CSV_URL =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vSWd5AZ1ITQ3onX3jRQmS0pD_T5hDwpDPluZPA6GSXu1zrvS1w4nhQ-64U1aBwIBMNuT0D5yLmB34UK/pub?gid=1262635118&single=true&output=csv";
@@ -874,7 +870,6 @@ function buildYouTubeThumbCandidates(videoId) {
   const jpg = `https://i.ytimg.com/vi/${videoId}`;
   const webp = `https://i.ytimg.com/vi_webp/${videoId}`;
 
-  // maxres가 없는 영상이 많아서, 실패 시 자동으로 단계 낮추도록 후보를 촘촘하게 둠
   return [
     `${jpg}/maxresdefault.jpg`,
     `${webp}/maxresdefault.webp`,
@@ -1078,14 +1073,13 @@ function initPortfolioSlider(rootEl) {
     if (e.key === "ArrowRight") go(index + 1);
   });
 
-  // swipe (pointer) - 클릭 방해하지 않게 설계
   let downX = 0;
   let downY = 0;
   let dragging = false;
   let moved = false;
 
-  const MOVE_TO_DRAG = 6;     // 이 이상 움직이면 "드래그로 간주"
-  const SWIPE_THRESHOLD = 40; // 이 이상이면 슬라이드 넘김
+  const MOVE_TO_DRAG = 6;
+  const SWIPE_THRESHOLD = 40;
 
   viewport?.addEventListener("pointerdown", (e) => {
     dragging = true;
@@ -1100,10 +1094,8 @@ function initPortfolioSlider(rootEl) {
     const dx = e.clientX - downX;
     const dy = e.clientY - downY;
 
-    // 세로 스크롤을 방해하지 않기 위해, 가로 움직임이 더 클 때만 드래그로 처리
     if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > MOVE_TO_DRAG) {
       moved = true;
-      // 이때만 기본 동작(텍스트 선택/드래그 이미지 등) 방지
       e.preventDefault();
     }
   }, { passive: false });
@@ -1112,7 +1104,7 @@ function initPortfolioSlider(rootEl) {
     if (!dragging) return;
     dragging = false;
 
-    if (!moved) return; // 클릭은 그대로 통과
+    if (!moved) return;
 
     const dx = e.clientX - downX;
     if (dx > SWIPE_THRESHOLD) go(index - 1);
@@ -1124,10 +1116,8 @@ function initPortfolioSlider(rootEl) {
     moved = false;
   });
 
-  // 드래그로 이동한 경우에만 링크 클릭 차단
   viewport?.addEventListener("click", (e) => {
     if (!moved) return;
-    // 드래그 후 발생하는 click(고스트 클릭) 차단
     e.preventDefault();
     e.stopPropagation();
     moved = false;
@@ -1173,9 +1163,6 @@ document.addEventListener("DOMContentLoaded", initPortfolioSection);
 
 /* =========================
    Form + Quote Calculator
-   - Copy includes ALL inputs in a nice template
-   - Reset truly resets everything
-   - Compact quote UI (no long detail list)
 ========================= */
 
 const FORM_CSV_URL =
@@ -1232,7 +1219,6 @@ function normalizeFormRows(items) {
       const label = String(it.label ?? "").trim();
       const placeholder = String(it.placeholder ?? "").trim();
 
-      // type 비어있으면 자동 보정(추가 문의사항 같은 케이스)
       if (!type) type = placeholder.length >= 10 ? "textarea" : "text";
 
       return {
@@ -1252,7 +1238,6 @@ function normalizeFormRows(items) {
 function renderFormSection(formItems, mountEl) {
   const rows = normalizeFormRows(formItems);
 
-  // order -> group 묶기
   const orderMap = new Map();
   for (const r of rows) {
     if (!orderMap.has(r.order)) orderMap.set(r.order, new Map());
@@ -1261,13 +1246,12 @@ function renderFormSection(formItems, mountEl) {
     gmap.get(r.group).push(r);
   }
 
-  // 블록 리스트로 펼치기(정렬 포함)
   const blocks = [];
   const orders = Array.from(orderMap.keys()).sort((a, b) => a - b);
   for (const o of orders) {
     const gmap = orderMap.get(o);
     const gnames = Array.from(gmap.keys());
-    // 안정 정렬
+
     gnames.sort((a, b) => a.localeCompare(b, "ko"));
     for (const g of gnames) {
       const grows = gmap.get(g) || [];
@@ -1275,7 +1259,6 @@ function renderFormSection(formItems, mountEl) {
     }
   }
 
-  // ✅ "협업작가" + "일러레 정보" 합치기
   const merged = [];
   for (let i = 0; i < blocks.length; i++) {
     const cur = blocks[i];
@@ -1347,7 +1330,7 @@ function renderFormSection(formItems, mountEl) {
       }
       html += `</div>`;
 
-      // illustrator info (text inputs)
+      // illustrator info
       const illuKey = formToKey("일러레_정보");
       for (let i = 0; i < (b.extraRows || []).length; i++) {
         const r = b.extraRows[i];
@@ -1535,7 +1518,7 @@ function buildFormCopyText(formEl) {
   const bUnit = formFindBlock(formEl, "개당 추가 옵션");
   const bChk = formFindBlock(formEl, "일반 추가 옵션");
   const bExpr = formFindBlock(formEl, "표정");
-  const bCollab = formFindBlock(formEl, "협업"); // merged card
+  const bCollab = formFindBlock(formEl, "협업");
   const bPrivacy = formFindBlock(formEl, "포트폴리오 비공개");
   const bExtra = formFindBlock(formEl, "추가 문의사항");
 
@@ -1544,7 +1527,6 @@ function buildFormCopyText(formEl) {
 
   const rigOpt = bRig ? formPickCheckedLabel(bRig, 'input[type="radio"]:checked') : "";
 
-  // 추가옵션 (unit + checkbox) -> 한 줄로
   const addParts = [];
 
   if (bUnit) {
@@ -1724,3 +1706,244 @@ document.addEventListener("DOMContentLoaded", initFormSection);
 
   setTimeout(bindGoto, 800);
 })();
+
+
+
+
+/* =========================
+   Intro Slider
+========================= */
+const INTRO_CSV_URL =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vSWd5AZ1ITQ3onX3jRQmS0pD_T5hDwpDPluZPA6GSXu1zrvS1w4nhQ-64U1aBwIBMNuT0D5yLmB34UK/pub?gid=1348701818&single=true&output=csv";
+
+function normalizeIntroSlides(items) {
+  const cleaned = (items || [])
+    .map((it) => ({
+      order: Number(String(it.order ?? "").trim()) || 9999,
+      thumb: String(it.thumb ?? "").trim(),
+    }))
+    .filter((it) => it.thumb);
+
+  cleaned.sort((a, b) => a.order - b.order);
+
+  return cleaned.map((it) => ({
+    ...it,
+    src: toGoogleusercontent(it.thumb, { size: "w1600" }),
+    alt: `Intro slide ${it.order}`,
+  }));
+}
+
+function renderIntroSlider(slides, rootEl) {
+  const sliderEl = rootEl.querySelector('[data-intro="slider"]');
+  const track = sliderEl?.querySelector(".introTrack");
+  const dotsWrap = rootEl.querySelector('[data-intro="dots"]');
+
+  if (!sliderEl || !track || !dotsWrap) return;
+
+  if (!slides.length) {
+    track.innerHTML = `
+      <div class="introSlide">
+        <div style="padding:18px;color:var(--text-soft)">표시할 이미지가 없어요.</div>
+      </div>
+    `.trim();
+    return;
+  }
+
+  const slidesHtml = slides
+    .map((s, idx) => {
+      const loading = idx === 0 ? "eager" : "lazy";
+      return `
+        <article class="introSlide" role="group" aria-label="${idx + 1} / ${slides.length}">
+          <img class="introSlide__img"
+               src="${escapeHtml(s.src)}"
+               alt="${escapeHtml(s.alt)}"
+               draggable="false"
+               loading="${loading}">
+        </article>
+      `.trim();
+    })
+    .join("");
+
+  track.innerHTML = slidesHtml;
+
+  dotsWrap.innerHTML = slides
+    .map((_, i) => `<button class="introDot" type="button" aria-label="${i + 1}번째 슬라이드"></button>`)
+    .join("");
+
+  initIntroSlider(rootEl, slides.length);
+}
+
+function initIntroSlider(rootEl, total) {
+  const sliderEl = rootEl.querySelector('[data-intro="slider"]');
+  if (!sliderEl) return;
+
+  const viewport = sliderEl.querySelector(".introViewport");
+  const track = sliderEl.querySelector(".introTrack");
+  const slides = Array.from(sliderEl.querySelectorAll(".introSlide"));
+
+  const prevBtn = sliderEl.querySelector(".introNav--prev");
+  const nextBtn = sliderEl.querySelector(".introNav--next");
+
+  const dotsWrap = rootEl.querySelector('[data-intro="dots"]');
+  const dots = dotsWrap ? Array.from(dotsWrap.querySelectorAll(".introDot")) : [];
+
+  let index = 0;
+
+  function clampLoop(n) {
+    if (total <= 1) return 0;
+    if (n < 0) return total - 1;
+    if (n >= total) return 0;
+    return n;
+  }
+
+  function update() {
+    index = clampLoop(index);
+    track.style.transform = `translateX(${-index * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle("is-active", i === index));
+  }
+
+  function go(n) {
+    index = clampLoop(n);
+    update();
+  }
+
+  prevBtn?.addEventListener("click", () => go(index - 1));
+  nextBtn?.addEventListener("click", () => go(index + 1));
+  dots.forEach((d, i) => d.addEventListener("click", () => go(i)));
+
+  // keyboard
+  sliderEl.tabIndex = 0;
+  sliderEl.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") go(index - 1);
+    if (e.key === "ArrowRight") go(index + 1);
+  });
+
+  let downX = 0;
+  let downY = 0;
+  let dragging = false;
+  let moved = false;
+
+  const MOVE_TO_DRAG = 6;
+  const SWIPE_THRESHOLD = 40;
+
+  viewport?.addEventListener("pointerdown", (e) => {
+    dragging = true;
+    moved = false;
+    downX = e.clientX;
+    downY = e.clientY;
+  });
+
+  viewport?.addEventListener(
+    "pointermove",
+    (e) => {
+      if (!dragging) return;
+
+      const dx = e.clientX - downX;
+      const dy = e.clientY - downY;
+
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > MOVE_TO_DRAG) {
+        moved = true;
+        e.preventDefault();
+      }
+    },
+    { passive: false }
+  );
+
+  viewport?.addEventListener("pointerup", (e) => {
+    if (!dragging) return;
+    dragging = false;
+
+    if (!moved) return;
+
+    const dx = e.clientX - downX;
+    if (dx > SWIPE_THRESHOLD) go(index - 1);
+    else if (dx < -SWIPE_THRESHOLD) go(index + 1);
+  });
+
+  viewport?.addEventListener("pointercancel", () => {
+    dragging = false;
+    moved = false;
+  });
+
+  viewport?.addEventListener(
+    "click",
+    (e) => {
+      if (!moved) return;
+      e.preventDefault();
+      e.stopPropagation();
+      moved = false;
+    },
+    true
+  );
+
+  if (total <= 1) {
+    prevBtn && (prevBtn.style.display = "none");
+    nextBtn && (nextBtn.style.display = "none");
+  }
+
+  update();
+}
+
+async function initIntroSectionSlider() {
+  const introEl = document.querySelector("#intro");
+  if (!introEl) return;
+
+  try {
+    const res = await fetch(INTRO_CSV_URL, { cache: "no-store" });
+    if (!res.ok) throw new Error(`CSV fetch failed: ${res.status}`);
+    const csvText = await res.text();
+
+    const rows = parseCsv(csvText);
+    const items = rowsToObjects(rows);
+
+    const slides = normalizeIntroSlides(items);
+    renderIntroSlider(slides, introEl);
+  } catch (err) {
+    console.error("[intro] slider init failed:", err);
+    const track = document.querySelector("#intro .introTrack");
+    if (track) {
+      track.innerHTML = `
+        <div class="introSlide">
+          <div style="padding:18px;color:var(--text-soft)">슬라이드를 불러오지 못했어요.</div>
+        </div>
+      `.trim();
+    }
+  }
+}
+
+document.addEventListener("DOMContentLoaded", initIntroSectionSlider);
+
+
+function initCollabFold() {
+  const section = document.querySelector("#collab");
+  if (!section) return;
+
+  const headBtn = section.querySelector(".collabHead");
+  const panel = section.querySelector("#collabPanel");
+  if (!headBtn || !panel) return;
+
+  section.classList.remove("is-open");
+  headBtn.setAttribute("aria-expanded", "false");
+
+  panel.style.display = "none";
+  panel.style.height = "0px";
+  panel.style.overflow = "hidden";
+
+  headBtn.addEventListener("click", () => {
+    const isOpen = section.classList.contains("is-open");
+
+    if (isOpen) {
+      // 닫기
+      section.classList.remove("is-open");
+      headBtn.setAttribute("aria-expanded", "false");
+      closeAccordion(panel);
+    } else {
+      // 열기
+      section.classList.add("is-open");
+      headBtn.setAttribute("aria-expanded", "true");
+      openAccordion(panel);
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", initCollabFold);

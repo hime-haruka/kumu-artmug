@@ -16,27 +16,27 @@
     /* base */
     --bg:        #FBF2E9; /* 전체 배경(크림) */
     --surface:   #f1efe5; /* 섹션/카드 바탕 */
-    --surface-2: #FFEAD9; /* 포인트 들어가는 밝은 바탕 */
+    --surface-2: #fbc1b6; /* 포인트 들어가는 밝은 바탕 */
     --muted:     #ced5d6; /* 라인/구분/보조 */
 
     /* accents */
     --accent:      #F2ABAF; /* 메인 강조 */
     --accent-soft: #F5CCC6; /* 연한 강조 */
-    --peach:       #FFD9C6; /* 보조 포인트 (WARM) */
-    --sky:         #B8C9E7; /* 보조 포인트 (COLD) */
+    --peach:       #FFD9C6; /* 보조 포인트 */
+    --sky:         #B8C9E7; /* 보조 포인트 */
     --rose-mist:   #F9E5E1; /* 보조 배경/뱃지 */
 
     /* text */
-    --text:        #2E2F36; /* 본문 */
-    --text-soft:   #5E606B; /* 보조 텍스트 */
-    --text-muted:  #8A8D98; /* 캡션/힌트 */
+    --text:        #46312c; /* 본문 */
+    --text-soft:   #7b635f; /* 보조 텍스트 */
+    --text-muted:  #998582; /* 캡션/힌트 */
 
-    --ui-soft: #F2ECE6;     /* 페이지 위 떠있는 판 느낌 */
-    --ui-card: #FBF8F4;     /* 기본 카드 */
+    --ui-soft: #F2ECE6;       /* 페이지 위 떠있는 판 느낌 */
+    --ui-card: #FBF8F4;       /* 기본 카드 */
     --ui-open: #ffead986;     /* 열린 카드 */
     --ui-border-strong: #D7CEC6;
 
-    --ui-accent-soft: #F4E1DE; /* 열림 강조 배경 */
+    --ui-accent-soft: #F4E1DE;
 
     /* lines / effects */
     --border:        rgba(46,47,54,.12);
@@ -107,9 +107,10 @@ body{
 }
 
 .sec .title{
-    font-family: 'ChilchilgongBalsache','Courier New',Courier,monospace;
+    font-family: 'Cafe24Surround','Courier New',Courier,monospace;
     font-size: 28px;
     letter-spacing: .2px;
+    color: var(--text);
 }
 
 .sec .desc{
@@ -119,15 +120,13 @@ body{
 .sec .head{
     text-align: center;
     margin-bottom: 40px;
-
     flex-direction: column;
     align-items: center;
     gap: 10px;
-
     padding: 18px 22px;
     background: var(--surface-2);
-    border: 1px solid var(--border);
     width: 100%;
+    border-radius: var(--r-md);
 }
 
 
