@@ -89,14 +89,13 @@
 
     padding:12px;
     border-radius:var(--r-md);
-    background:rgba(255,255,255,.35);
+    background:#fff;
     border:1px solid rgba(46,47,54,.08);
     transition:transform .16s ease, box-shadow .16s ease, background .16s ease;
 }
 
 #options .optItem:hover{
     transform:translateY(-1px);
-    background:rgba(255,255,255,.50);
     box-shadow:0 12px 22px rgba(0,0,0,.06);
 }
 

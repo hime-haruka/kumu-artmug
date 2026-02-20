@@ -27,7 +27,7 @@
   padding: 0 12px;
   border-radius: 999px;
   border: 1px solid var(--border);
-  background: var(--rose-mist);
+  background: #fff;
   color: var(--text-soft);
   font-size: 13px;
   letter-spacing: .3px;

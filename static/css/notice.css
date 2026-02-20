@@ -191,6 +191,7 @@
   line-height:1.65;
   color: rgba(70,49,44,.68);
   padding-top:4px;
+  font-weight: 500;
 }
 
 #notice .noticeRow + .noticeRow{
