@@ -69,7 +69,7 @@
   width: 100%;
   border-radius: var(--r-md);
   border: 1px solid rgba(46,47,54,.12);
-  background: rgba(255,255,255,.55);
+  background: #fffaf7;
   padding: 12px 12px;
   font: inherit;
   color: inherit;
@@ -106,7 +106,7 @@
   padding: 10px 12px;
   border-radius: 999px;
   border: 1px solid rgba(46,47,54,.10);
-  background: rgba(255,255,255,.35);
+  background: #fff1e6;
   cursor: pointer;
 
   transition: transform .12s ease, background .12s ease, border-color .12s ease, box-shadow .12s ease;
@@ -176,7 +176,7 @@
   padding: 10px 10px;
   border-radius: 12px;
   border: 1px solid rgba(46,47,54,.12);
-  background: rgba(255,255,255,.75);
+  background: #fff1e6;
   font: inherit;
   outline: none;
   transition: box-shadow .15s ease, background .15s ease, border-color .15s ease;
@@ -279,6 +279,7 @@
   justify-content:flex-end;
 }
 
+
 /* ===== responsive ===== */
 @media (max-width: 640px){
   #form .formBlock{ padding: 16px; border-radius: var(--r-md); }
@@ -358,6 +359,7 @@
   row-gap: 8px;
   column-gap: 10px;
   align-items:center;
+  background: #fffaf7;
 }
 
 #form .formUnitRow__label{ grid-area: label; }
@@ -372,6 +374,22 @@
   padding-top: 14px;
   border-top: 1px dashed rgba(46,47,54,.14);
 }
+
+#form .formChoice:has(input[type="checkbox"]){
+  background: #fffaf7;
+}
+
+#form .formChoice:has(input[type="radio"]):hover,
+#form .formChoice:has(input[type="radio"]:checked){
+  background: #ffecdd;
+}
+
+#form .formChoice:has(input[type="checkbox"]):hover,
+#form .formChoice:has(input[type="checkbox"]:checked){
+  background: #feebda;
+}
+
+
 
 /* ===== responsive ===== */
 @media (max-width: 980px){
