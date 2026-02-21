@@ -56,13 +56,6 @@
   min-width: 0;
 }
 
-#form .formLabel{
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  color: #cf7951;
-  font-size: 14px;
-}
-
 /* inputs */
 #form .formInput,
 #form .formTextarea{
